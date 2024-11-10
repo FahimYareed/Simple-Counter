@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <style>
+      /* CSS Code */
+
+      body,
+      html {
+        height: 100%;
+        display: flex;
+        background-color: #141516;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+
+      #count {
+        color: #ced4e2;
+        display: block;
+        text-align: center;
+        font-size: 10em;
+        font-family: Helvetica;
+      }
+
+      #containerBody {
+        text-align: center;
+        padding: 20px;
+        border: 2px solid #ced4e2;
+        border-radius: 10px;
+      }
+
+      .buttons {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 1.5em;
+        color: #ced4e2;
+        border-color: #ced4e2;
+        background-color: #2a2727;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.25s;
+      }
+
+      .buttons:hover {
+        background-color: #57504d;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="containerBody">
+      <label id="count">0</label><br />
+      <button id="decrementBtn" class="buttons">-</button>
+      <button id="resetBtn" class="buttons">Reset</button>
+      <button id="incrementBtn" class="buttons">+</button>
+    </div>
+
+    <script>
+      // JavaScript Code
+
+      const decrementBtn = document.getElementById("decrementBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      const incrementBtn = document.getElementById("incrementBtn");
+      const count = document.getElementById("count");
+
+      let counter = 0;
+      let interval;
+
+      function updateDisplay() {
+        count.textContent = counter;
+      }
+
+      function increment() {
+        counter++;
+        updateDisplay();
+      }
+
+      function decrement() {
+        if (counter > 0) {
+          counter--;
+          updateDisplay();
+        }
+      }
+
+      function startHold(action) {
+        action();
+        interval = setInterval(action, 200);
+      }
+
+      function stopHold() {
+        clearInterval(interval);
+      }
+
+      incrementBtn.addEventListener("mousedown", () => startHold(increment));
+      incrementBtn.addEventListener("mouseup", stopHold);
+      incrementBtn.addEventListener("mouseleave", stopHold);
+
+      decrementBtn.addEventListener("mousedown", () => startHold(decrement));
+      decrementBtn.addEventListener("mouseup", stopHold);
+      decrementBtn.addEventListener("mouseleave", stopHold);
+
+      resetBtn.onclick = function () {
+        counter = 0;
+        updateDisplay();
+      };
+    </script>
+  </body>
+</html>

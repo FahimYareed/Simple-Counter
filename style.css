@@ -1,0 +1,38 @@
+body,
+html {
+  height: 100%;
+  display: flex;
+  background-color: #141516;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+#count {
+  color: #ced4e2;
+  display: block;
+  text-align: center;
+  font-size: 10em;
+  font-family: Helvetica;
+}
+#containerBody {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #ced4e2;
+  border-radius: 10px;
+}
+
+.buttons {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1.5em;
+  color: #ced4e2;
+  border-color: #ced4e2;
+  background-color: #2a2727;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.buttons:hover {
+  background-color: #57504d;
+}
